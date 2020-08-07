@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: $body-bg-color;
+    font-family: "Roboto Regular";
+    font-size: $default-font-size;
+    color: $primary-font-color;
+}
+
+a {
+    text-decoration: none;
+}
+
+.content {
+    max-width: 80%;
+    margin: 20px auto;
+}

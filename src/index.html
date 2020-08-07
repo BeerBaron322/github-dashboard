@@ -6,6 +6,41 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <div class="content">
+        <div id="root"></div>
+    </div>
+
+    <script id="template_repo-list" type="text/x-handlebars-template">
+        <div class="repo-list-section">
+            <div class="actions">
+                <form class="search-form" action="">
+                    <input class="search-form_input" type="text" placeholder="Write name of repositories">
+                </form>
+                <button class="sort-btn">Sort by stars</button>
+            </div>
+            <ul class="repo-list">
+                <li class="repo-list_item">
+                    <div class="item-name head-item">Name</div>
+                    <div class="item-stars head-item">Stars</div>
+                    <div class="item-data head-item">Last update</div>
+                    <div class="item-link head-item">Link</div>
+                </li>
+                {{#each items}}
+                    <li class="repo-list_item">
+                        <div class="item-name item">
+                            <a class="item-name_link" href="#">{{this.name}}</a>
+                        </div>
+                        <div class="item-stars item">{{this.stargazers_count}}</div>
+                        <div class="item-data item">{{this.updated_at}}</div>
+                        <div class="item-link item">
+                            <a class="item-link_link" href="{{this.html_url}}">
+                                <img class="link-svg" src="./assets/img/link.svg" alt="">
+                            </a>
+                        </div>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    </script>
 </body>
 </html>

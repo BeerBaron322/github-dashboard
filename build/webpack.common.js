@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const PATHS = {
     src: path.resolve(__dirname, '../src'), 
@@ -30,6 +31,15 @@ module.exports = {
                 use: 'ts-loader',
                 exclude: [/node_modules/]
             },
+
+            {
+                test: /\.(ttf|eot|woff|svg|woff2)$/,
+                loader: 'file-loader',
+                options: {
+                    name: `${PATHS.assets}fonts/[name].[ext]`
+                },
+                exclude: [/node_modules/]
+            },
         ]
     },
 
@@ -39,7 +49,13 @@ module.exports = {
         }),
         new webpack.ProvidePlugin({
             Handlebars: '../node_modules/'
-        })
+        }),
+        new CopyPlugin({
+            patterns: [
+                {from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img`},
+                {from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts`}
+            ]
+        }),
     ],
 
     resolve: {
