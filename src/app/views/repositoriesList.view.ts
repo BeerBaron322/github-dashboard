@@ -4,7 +4,7 @@ import {IRepositoriesList} from '../interfaces/IRepositorieList';
 export class RepositoriesListView {
     private tempalate: string | undefined;
     private container: HTMLElement;
-    //private data: IRepositoriesList;
+    private name: string = '';
 
     constructor (conteiner: HTMLElement) {
         let tempalte = document.querySelector('#template_repo-list')?.innerHTML;
@@ -15,17 +15,28 @@ export class RepositoriesListView {
         this.container = conteiner;
     }
 
-    public handleSortList(handler: Function) {
-        let searchBtn = document.querySelector('.repo-list-section .actions .sort-btn');
+    public bindSortList(handler: Function) {
+        let searchBtn = document.querySelector('.actions .sort-btn');
         if (searchBtn) {
             searchBtn.addEventListener('click', (event)=> {
-                handler();
+                handler(this.name);
             })
         }
     }
 
-    public handleSearchRepo(handler: Function) {
-
+    public bindSearchRepo(handler: Function) {
+        let searchInput:HTMLInputElement | null = document.querySelector('.actions .search-input');
+        if (searchInput !== null) {
+            searchInput.addEventListener('keyup', (event:KeyboardEvent) => {
+                if (event.key === 'Enter') {
+                    let value = searchInput?.value;
+                    if (value) {
+                        this.name = value;
+                        handler(this.name);
+                    }
+                }
+            });
+        }
     }
 
     public render(data:IRepositoriesList) {

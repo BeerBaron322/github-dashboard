@@ -7,17 +7,17 @@
 </head>
 <body>
     <div class="content">
+        <header class="header">
+            <div class="actions">
+                <input class="search-input" type="text" placeholder="Write name of repositories">
+                <button class="sort-btn">Sort by stars</button>
+            </div>
+        </header>
         <div id="root"></div>
     </div>
 
     <script id="template_repo-list" type="text/x-handlebars-template">
         <div class="repo-list-section">
-            <div class="actions">
-                <form class="search-form" action="">
-                    <input class="search-form_input" type="text" placeholder="Write name of repositories">
-                </form>
-                <button class="sort-btn">Sort by stars</button>
-            </div>
             <ul class="repo-list">
                 <li class="repo-list_item">
                     <div class="item-name head-item">Name</div>
