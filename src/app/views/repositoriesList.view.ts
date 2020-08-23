@@ -18,8 +18,8 @@ export class RepositoriesListView {
     public bindSortList(handler: Function) {
         let searchBtn = document.querySelector('.actions .sort-btn');
         if (searchBtn) {
-            searchBtn.addEventListener('click', (event)=> {
-                handler(this.name);
+            searchBtn.addEventListener('click', () => {
+                handler();
             })
         }
     }
@@ -34,6 +34,18 @@ export class RepositoriesListView {
                         this.name = value;
                         handler(this.name);
                     }
+                }
+            });
+        }
+    }
+
+    public bindSearchChange(handler: Function) {
+        let searchInput:HTMLInputElement | null = document.querySelector('.actions .search-input');
+        if (searchInput !== null) {
+            searchInput.addEventListener('change', (event) => {
+                let value = searchInput?.value;
+                if (value) {
+                    handler(value);
                 }
             });
         }

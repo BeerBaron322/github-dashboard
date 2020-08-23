@@ -1,0 +1,28 @@
+.paginator {
+    &__active {
+        background-color: $accent-color;
+    }
+    &-body {
+        display: flex;
+        margin: 0 auto;
+        border: 1px solid black;
+        justify-content: center;
+        &_page {
+            font-family: 'Roboto Bold';
+            min-width: 40px;
+            height: 30px;
+            text-align: center;
+            line-height: 31px;
+            border-left: 1px solid black;
+            cursor: pointer;
+            &:last-child{
+                margin-right: 0;
+                border-right: 1px solid black;
+            }
+
+            &:hover {
+                background-color: $accent-color;
+            }
+        }
+    }
+}
